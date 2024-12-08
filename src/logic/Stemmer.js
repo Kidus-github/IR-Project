@@ -8,12 +8,12 @@ const suffix_arr = [];
 const preffix_arr = [];
 
 function stem(word) {
-  let cv_string = Translator.transliterate(word, "am"); // consonant-vowel string
+  let cv_string = Translator.IR_transliterate(word, "am"); // consonant-vowel string
 
   // Prepare suffix array
   const sarr = suffix_list.split("|");
   sarr.forEach((suffix) => {
-    suffix_arr.push(Translator.transliterate(suffix, "am"));
+    suffix_arr.push(Translator.IR_transliterate(suffix, "am"));
   });
 
   suffix_arr.push("Wa"); // Special case for ሯ
@@ -21,7 +21,7 @@ function stem(word) {
   // Prepare prefix array
   const parr = prefix_list.split("|");
   parr.forEach((prefix) => {
-    preffix_arr.push(Translator.transliterate(prefix, "am"));
+    preffix_arr.push(Translator.IR_transliterate(prefix, "am"));
   });
 
   // Remove suffixes
@@ -61,7 +61,7 @@ function stem(word) {
   //   )
   // }
 
-  return Translator.transliterate(cv_string, "en");
+  return Translator.IR_transliterate(cv_string, "en");
 }
 
 export default stem;
