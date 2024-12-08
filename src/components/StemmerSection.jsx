@@ -4,6 +4,7 @@ import { useState } from "react";
 function StemmerSection({ darkmode }) {
   const [query, setQuery] = useState("");
   const [stemmed, setStemmed] = useState("");
+  const [visiblity, setVisibility] = useState(false);
   return (
     <section className="relative h-screen">
       <div
@@ -54,14 +55,23 @@ function StemmerSection({ darkmode }) {
           <div className=" flex justify-center mt-4">
             <div
               className=" bg-cyan-400 z-10 w-fit py-2 px-9 rounded text-slate-100 font-semibold  cursor-pointer hover:bg-cyan-600"
-              onClick={() => setStemmed(stem(query))}
+              onClick={() => {
+                setStemmed(stem(query));
+                setVisibility(true);
+              }}
             >
               Submit
             </div>
           </div>
-          <div className={`${!darkmode ? "text-gray-400 " : "text-gray-900 "}`}>
-            Result: {stemmed}
-          </div>
+          {visiblity ? (
+            <div
+              className={`${!darkmode ? "text-gray-400 " : "text-gray-900 "}`}
+            >
+              Result: {stemmed}
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </section>
