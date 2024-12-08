@@ -30,7 +30,11 @@ function StemmerSection({ darkmode }) {
             placeholder="Write Text"
           ></textarea>
           <div className=" w-full mt-4">
-            <div className="flex w-full justify-center rounded">
+            <div
+              className={`${
+                !darkmode ? "text-gray-400 " : "text-gray-900 "
+              }flex w-full justify-center rounded`}
+            >
               <span className="border-2 px-6 py-2 rounded-tl-lg rounded-bl-lg">
                 Stemmer Word
               </span>
